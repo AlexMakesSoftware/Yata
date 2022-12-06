@@ -1,10 +1,14 @@
+using System.Text.Json.Serialization;
+
 namespace YataModel
 {
-    public enum TaskState
+     [JsonConverter(typeof(JsonStringEnumConverter))]
+     public enum TaskState
     {
         Unsorted,
         Scheduled,
         InProgress,
-        Tickler
+        Tickler,
+        Completed
     }
 }

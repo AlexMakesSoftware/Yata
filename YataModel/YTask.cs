@@ -11,7 +11,7 @@ public class YTask
 
     public DateTime Due { get; set; }
 
-    public DateTime Completed { get; set; }
+    public DateTime? Completed { get; set; }
 
     public TaskState State { get; set; }
 
