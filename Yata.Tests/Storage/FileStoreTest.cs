@@ -2,10 +2,10 @@ namespace YataTests;
 
 using System.Reflection;
 using YataModel;
-using YataModel.storage;
+using YataModel.Storage;
 using Xunit;
 
-public class YTaskTest
+public class FileStoreTest
 {
     IStorage? _store;
 
@@ -15,13 +15,6 @@ public class YTaskTest
         YTask t = new YTask("Write Yata - Yet Another Todo App.");        
         Assert.Equal(TaskState.Unsorted, t.State);
     }
-    
-        
-    // public YTaskTest() {
-    //     _store = new FileStoreImpl(Path.GetFullPath("resources/testJobs.json"), new DateTime(2021, 10, 1) );
-    //     _store.LoadTodos();
-    // }
-
 
     [Fact]
     public void TestOverdueJobs()
@@ -46,8 +39,6 @@ public class YTaskTest
 
     }
 
-    
-
-    
-
+    //Q:What's untested?
+    //A: The FileStoreImpl constructor, and the FileStoreImpl.LoadTodos() method.
 }

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\YataModel\YataModel.csproj" />
+    <ProjectReference Include="..\Yata.Model\Yata.Model.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
