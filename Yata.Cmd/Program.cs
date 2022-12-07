@@ -71,8 +71,9 @@ public class Program
         }, e => e);        
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine(helpText);        
-        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("Example: yata add --task \"Washing up.\"");
+        Console.ResetColor();
     }
 
     private static int RunDueAndReturnExitCode(DueOptions opts)
@@ -103,12 +104,11 @@ public class Program
             throw new System.ArgumentNullException("No task description speicified!");
         }
 
-        Console.WriteLine("Adding a new task to the list:"+opts);
-        
-        //Add a new task to the list
         YTask task = new YTask(opts.Task);        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Adding a new task to the list:"+task);        
+        Console.ResetColor();
         
-        //if opts.Due is set, split it into a date and time
         if (opts.Due.HasValue)
         {
             task.Due = opts.Due.Value;
