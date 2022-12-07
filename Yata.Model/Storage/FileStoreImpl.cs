@@ -32,6 +32,14 @@ namespace YataModel.Storage
         public void LoadTodos()
         {
             if(_envFile==null) throw new Exception("No file specified");
+            
+            //check file exists
+            if (!System.IO.File.Exists(_envFile))
+            {
+                _tasks = new List<YTask>();
+                return;
+            }
+
             string contents = System.IO.File.ReadAllText(_envFile);
             List<YTask>? tasks = System.Text.Json.JsonSerializer.Deserialize<List<YTask>>(contents);
             if(tasks==null) tasks = new List<YTask>();
@@ -44,16 +52,19 @@ namespace YataModel.Storage
 
             string contents = System.Text.Json.JsonSerializer.Serialize(_tasks);
 
+            //print out location of file
+            Console.WriteLine("Saving to: " + _envFile);
+
             System.IO.File.WriteAllText(_envFile, contents);
         }      
 
-        public List<YTask> OverdueJobs()
+        public List<YTask> DueJobs()
         {
             //get all the jobs that are overdue in a list
             List<YTask> overdueJobs = new List<YTask>();
             foreach (YTask task in _tasks)
             {
-                if (task.State == TaskState.Scheduled && task.Due.Date < TodaysDate())
+                if (task.State == TaskState.Scheduled && task.Due.Date <= TodaysDate())
                 {
                     overdueJobs.Add(task);
                 }
@@ -100,14 +111,10 @@ namespace YataModel.Storage
         }
 
         public void AddTask(YTask task)
-        {
+        {                       
             _tasks.Add(task);
         }
-
-        public void SaveTask(YTask task)
-        {
-            //With an in-memory store, this is a no-op.
-        }
+        
 
         public List<YTask> GetAllInState(TaskState state)
         {
