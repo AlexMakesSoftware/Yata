@@ -21,7 +21,7 @@ public class FileStoreTest
     {
         _store = new FileStoreImpl(Path.GetFullPath("resources/oneOverDuetest.json"), new DateTime(2022, 12, 6) );
         _store.LoadTodos();
-        List<YTask> overdueJobs = _store.OverdueJobs();
+        List<YTask> overdueJobs = _store.DueJobs();
         Assert.Equal(2, overdueJobs.Count);
         //Doubt order is guaranteed, so check both start with "Overdue thing".
         Assert.True( overdueJobs[0].Description.StartsWith("Overdue thing") );

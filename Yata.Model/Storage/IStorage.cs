@@ -11,15 +11,13 @@ namespace YataModel.Storage
 
         public void SaveTodos();
 
-        public List<YTask> OverdueJobs();
+        public List<YTask> DueJobs();
 
         public List<YTask> JobsDueToday();
 
         public int CountByState(TaskState state);
 
         public void AddTask(YTask task);
-
-        public void SaveTask(YTask task);
 
         public List<YTask> GetAllInState(TaskState state);
         
