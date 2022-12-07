@@ -39,6 +39,4 @@ public class FileStoreTest
 
     }
 
-    //Q:What's untested?
-    //A: The FileStoreImpl constructor, and the FileStoreImpl.LoadTodos() method.
 }
