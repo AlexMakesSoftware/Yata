@@ -4,7 +4,7 @@
 
 This is a simple command line tool to organise tasks. The main objective here was to practice my very rusty C# skills for an upcoming project.
 
-> Oh C# is just like Java Alex, it's simple Alex, you'll be fine!.
+> Oh C# is just like Java Alex, it's simple Alex, you'll be fine!
 
 It's not but thankfully I had GitHub copilot to help me through this. I can't recomend that enough. It's a great tool.
 
