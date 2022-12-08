@@ -5,6 +5,7 @@
 
 *.code-workspace
 Notes.txt
+Jobs.json
 
 # User-specific files
 *.rsuser
