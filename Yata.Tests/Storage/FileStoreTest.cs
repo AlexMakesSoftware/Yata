@@ -24,8 +24,8 @@ public class FileStoreTest
         List<YTask> overdueJobs = _store.DueJobs();
         Assert.Equal(2, overdueJobs.Count);
         //Doubt order is guaranteed, so check both start with "Overdue thing".
-        Assert.True( overdueJobs[0].Description.StartsWith("Overdue thing") );
-        Assert.True( overdueJobs[1].Description.StartsWith("Overdue thing") );
+        Assert.StartsWith( "Overdue thing", overdueJobs[0].Description );
+        Assert.StartsWith( "Overdue thing", overdueJobs[1].Description );
     }
 
     [Fact]
@@ -34,7 +34,8 @@ public class FileStoreTest
         _store = new FileStoreImpl(Path.GetFullPath("resources/oneDueTodaytest.json"), new DateTime(2022, 12, 6));
         _store.LoadTodos();
         List<YTask> dueTodayJobs = _store.JobsDueToday();
-        Assert.Equal(1, dueTodayJobs.Count);
+
+        Assert.Single(dueTodayJobs);
         Assert.Equal("Write Yata - Yet Another Todo App.", dueTodayJobs[0].Description);
 
     }
