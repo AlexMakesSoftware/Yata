@@ -2,15 +2,7 @@
 
 namespace YataModel;
 public class YTask
-{
-    //default constructor for serialisation.
-    public YTask()
-    {
-        this.Description = "";
-        this.State = TaskState.Unsorted;
-        this.Due = DateTime.Today;
-    }
-
+{  
     public YTask(string description)
     {
         this.Description = description;
@@ -18,12 +10,7 @@ public class YTask
         this.Due = DateTime.Today;
     }
 
-    public YTask(string description, DateTime due)
-    {
-        this.Description = description;
-        this.State = TaskState.Scheduled;
-        this.Due = due;
-    }    
+    public int Id { get; set; }
 
     public string Description { get; set; }
 
