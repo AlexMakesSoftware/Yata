@@ -52,9 +52,6 @@ namespace YataModel.Storage
 
             string contents = System.Text.Json.JsonSerializer.Serialize(_tasks);
 
-            //print out location of file
-            Console.WriteLine("Saving to: " + _envFile);
-
             System.IO.File.WriteAllText(_envFile, contents);
         }      
 
