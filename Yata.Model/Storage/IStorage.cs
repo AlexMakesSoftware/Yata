@@ -17,9 +17,14 @@ namespace YataModel.Storage
 
         public int CountByState(TaskState state);
 
-        public void AddTask(YTask task);
+        public int AddTask(string Description);
+
+        public void SetTaskDue(int id, DateTime due);
+
+        public void SetTaskState(int id, TaskState state);
 
         public List<YTask> GetAllInState(TaskState state);
         
+        public YTask? GetTask(int id);
     }
 }

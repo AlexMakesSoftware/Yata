@@ -80,6 +80,9 @@ namespace YataModel.Storage
                     todaysJobs.Add(task);
                 }
             }
+
+            todaysJobs.Sort((x, y) => x.Due.CompareTo(y.Due));
+
             return todaysJobs;
         }
 
@@ -107,11 +110,26 @@ namespace YataModel.Storage
             return count;
         }
 
-        public void AddTask(YTask task)
-        {                       
+        public int AddTask(string description)
+        {    
+            YTask task = new YTask(description);            
             _tasks.Add(task);
+            return task.Id;
         }
         
+        public void SetTaskDue(int id, DateTime due)
+        {
+            foreach (YTask task in _tasks)
+            {
+                if (task.Id == id)
+                {
+                    task.Due = due;
+                    task.State = TaskState.Scheduled;
+                    return;
+                }
+            }
+            throw new Exception("Task with id "+id+" not found");
+        }
 
         public List<YTask> GetAllInState(TaskState state)
         {
@@ -125,6 +143,31 @@ namespace YataModel.Storage
                 }
             }
             return jobs;
+        }
+
+        public void SetTaskState(int id, TaskState state)
+        {
+            foreach (YTask task in _tasks)
+            {
+                if (task.Id == id)
+                {
+                    task.State = state;
+                    return;
+                }
+            }
+            throw new Exception("Task with id "+id+" not found");
+        }
+
+        public YTask? GetTask(int id)
+        {
+            foreach (YTask task in _tasks)
+            {
+                if (task.Id == id)
+                {
+                    return task;
+                }
+            }
+            return null;
         }
     }    
 }
