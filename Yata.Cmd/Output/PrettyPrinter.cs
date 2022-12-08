@@ -11,7 +11,7 @@ namespace Yata.Cmd
         internal static void PrintTask(YTask task)
         {            
             Console.ForegroundColor = ConsoleColor.Yellow;            
-            Console.WriteLine("Task: " + task.Description);            
+            Console.WriteLine("Id: "+task.Id+" Task: " + task.Description);
             Console.ResetColor();
         }
 
